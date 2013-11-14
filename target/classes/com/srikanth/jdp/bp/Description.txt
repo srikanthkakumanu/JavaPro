@@ -1,0 +1,6 @@
+Structural patterns include some quite sophisticated and powerful techniques. However, they are based on just a few basic techniques, primarily:
+Delegation - The pattern is one in which a given object provides an interface to a set of operations. However, the actual work for those
+operations is performed by one or more other objects.
+Object composition - Other objects are stored as pointers or references inside the object that provides the interface to clients.
+Object composition is a powerful yet often overlooked tool in the OOP programmer's toolbox. Structural patterns show you how to
+take advantage of it.

@@ -1,0 +1,9 @@
+This module explores creational patterns, which represent patterns that are often used in place of direct instantiation with constructors.
+Creational patterns make the creation process more adaptable and dynamic. In particular, they can provide a great deal of flexibility about
+which objects are created, how those objects are created, and how they are initialized.
+In this module, you will learn:
+How creational patterns help programmers
+Five well-known creational patterns
+The elements of the Factory Method pattern
+How to incorporate the Factory Method pattern into your course project
+
