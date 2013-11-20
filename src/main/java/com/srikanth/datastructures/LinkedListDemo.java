@@ -1,5 +1,8 @@
 package com.srikanth.datastructures;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Srikanth
@@ -9,10 +12,14 @@ package com.srikanth.datastructures;
  */
 public class LinkedListDemo {
 
+	private static Logger logger = LoggerFactory.getLogger(LinkedListDemo.class);
+	// Keep in mind that all of those classes are from SLF4J package!
     /**
      *   http://giridhar-mb.blogspot.in/2012/11/linked-list-implementation-in-java.html
      *   http://stackoverflow.com/questions/2034444/java-implementation-of-linked-list-data-structure
      */
+	private LinkedListDemo() {}
+	
     public static void main(String... args) {
         LinkedList ll = new LinkedList();
 
@@ -26,19 +33,19 @@ public class LinkedListDemo {
         ll.insert(12);
         ll.insert(13);
 
-        System.out.println("\n--- Display ---\n");
+        logger.info("\n--- Display ---\n");
         ll.display();
 
-        System.out.println("\n--- Deleting 7 ---\n");
+        logger.info("\n--- Deleting 7 ---\n");
         ll.delete(7);
 
-        System.out.println("\n--- After Deleting 7 ---\n");
+        logger.info("\n--- After Deleting 7 ---\n");
         ll.display();
 
-        System.out.println("\n--- Inserting 100 ---\n");
+        logger.info("\n--- Inserting 100 ---\n");
         ll.insert(100);
 
-        System.out.println("\n--- After Inserting 100 ---\n");
+        logger.info("\n--- After Inserting 100 ---\n");
         ll.display();
     }
 }
@@ -68,6 +75,7 @@ class Node {
     }
 }
 class LinkedList {
+	private static Logger logger = LoggerFactory.getLogger(LinkedList.class);
     private Node start;
 
     public LinkedList() {
@@ -90,12 +98,12 @@ class LinkedList {
         int count = 0;
 
         if(start == null) {
-            System.out.println("\n List is empty !!");
+            logger.info("\n List is empty !!");
         } else {
             Node temp = start;
 
             while(temp.getNext() != null) {
-                System.out.println("count("+count+") , node value="+temp.getData());
+                logger.info("count("+count+") , node value="+temp.getData());
                 count++;
                 temp = temp.getNext();
             }
@@ -107,7 +115,7 @@ class LinkedList {
 
         while(temp.getData() != x) {
             if(temp.getNext() == null) {
-                System.out.println("\nElement "+ x + " not found !");
+                logger.info("\nElement "+ x + " not found !");
                 break;
             }
             previous = temp;

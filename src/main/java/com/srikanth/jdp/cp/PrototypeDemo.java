@@ -17,9 +17,12 @@ public class PrototypeDemo {
      * Intent: specifying the kind of objects to create using a prototypical instance, creating new objects
      * by copying this prototype.
      */
+	private PrototypeDemo() {}
+	
     public static void main(String... args) throws CloneNotSupportedException {
         ConcretePrototype obj1= new ConcretePrototype ();
         ConcretePrototype obj2 = (ConcretePrototype) obj1.clone();
+        obj2.getClass();
     }
 }
 interface Prototype {

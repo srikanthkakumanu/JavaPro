@@ -3,6 +3,9 @@ package com.srikanth.jdp.sp;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Srikanth
@@ -20,6 +23,7 @@ public class FlyweightDemo {
      * class implements the Flyweight interface which is used to perform operations based on external state
      * and it also stores common state. A Flyweight Factory is used create and return Flyweight objects.
      */
+	private FlyweightDemo() {}
     public static void main(String... args) {
         FlyweightFactory flyweightFactory = FlyweightFactory.getInstance();
         for (int i = 0; i < 5; i++) {
@@ -43,31 +47,35 @@ interface Flyweight {
  when doMath() is executed.
  */
 class FlyweightAdder implements Flyweight {
+	private static Logger logger = LoggerFactory.getLogger(FlyweightAdder.class);
     String operation;
     public FlyweightAdder() {
         operation = "adding";
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+        	logger.error("Error: " + e.getLocalizedMessage() , e);
+            throw new RuntimeException(e);
         }
     }
     public void doMath(int a, int b) {
-        System.out.println(operation + " " + a + " and " + b + ": " + (a + b));
+        logger.info(operation + " " + a + " and " + b + ": " + (a + b));
     }
 }
 class FlyweightMultiplier implements Flyweight {
+	private static Logger logger = LoggerFactory.getLogger(FlyweightMultiplier.class);
     String operation;
     public FlyweightMultiplier() {
         operation = "multiplying";
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+        	logger.error("Error: " + e.getLocalizedMessage() , e);
+        	throw new RuntimeException(e);
         }
     }
     public void doMath(int a, int b) {
-        System.out.println(operation + " " + a + " and " + b + ": " + (a * b));
+        logger.info(operation + " " + a + " and " + b + ": " + (a * b));
     }
 }
 /**

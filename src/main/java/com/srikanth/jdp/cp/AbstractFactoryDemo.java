@@ -1,5 +1,8 @@
 package com.srikanth.jdp.cp;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Srikanth
@@ -8,6 +11,8 @@ package com.srikanth.jdp.cp;
  * To change this template use File | Settings | File Templates.
  */
 public class AbstractFactoryDemo {
+	//private static Logger logger = LoggerFactory.getLogger(AbstractFactoryDemo.class);
+	// Keep in mind that all of those classes are from SLF4J package!
     /**
      * It offers the interface for creating a family of related objects, without explicitly specifying their classes.
      * Abstract Factory should be used when:
@@ -19,6 +24,8 @@ public class AbstractFactoryDemo {
      *
      */
 
+	private AbstractFactoryDemo() {}
+	
     public static void main(String... args) {
         AbstractFactory abstractFactory = new AbstractFactory();
 
@@ -37,10 +44,12 @@ public class AbstractFactoryDemo {
 }
 class AbstractFactory {
     public SpeciesFactory getSpeciesFactory(String type) {
-        if("mammal".equals(type))
+        if("mammal".equals(type)){
             return new MammalFactory();
-        else
+        }
+        else {
             return new ReptileFactory();
+        }
     }
 }
 abstract class SpeciesFactory {
@@ -50,33 +59,37 @@ class MammalFactory extends SpeciesFactory {
 
     @Override
     public Animal getAnimal(String type) {
-        if ("dog".equals(type))
+        if ("dog".equals(type)) {
             return new Dog();
-        else
+        }
+        else {
             return new Cat();
+        }
     }
 }
 class ReptileFactory extends SpeciesFactory {
-
+	//private static Logger logger = LoggerFactory.getLogger(ReptileFactory.class);
     @Override
     public Animal getAnimal(String type) {
-        if ("snake".equals(type))
+        if ("snake".equals(type)) {
             return new Snake();
-        else
+        }
+        else {
             return new Tyrannosaurus();
+        }
     }
 }
 class Snake extends Animal {
-
+	private static Logger logger = LoggerFactory.getLogger(Snake.class);
     @Override
     public void makeSound() {
-        System.out.println("Hiss");
+        logger.info("Hiss");
     }
 }
 class Tyrannosaurus extends Animal {
-
+	private static Logger logger = LoggerFactory.getLogger(Tyrannosaurus.class);
     @Override
     public void makeSound() {
-        System.out.println("Roar");
+        logger.info("Roar");
     }
 }

@@ -1,5 +1,8 @@
 package com.srikanth.jdp.cp;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Srikanth
@@ -8,6 +11,8 @@ package com.srikanth.jdp.cp;
  * To change this template use File | Settings | File Templates.
  */
 public class BuilderDemo {
+	private static Logger logger = LoggerFactory.getLogger(BuilderDemo.class);
+	// Keep in mind that all of those classes are from SLF4J package!
     /**
      * It defines an instance for creating an object but letting subclasses decide which class to instantiate
      * and allows a finer control over the construction process.
@@ -23,12 +28,13 @@ public class BuilderDemo {
         RTFReader rtfReader = new RTFReader(asciiBuilder);
         rtfReader.parseRTF(doc);
         ASCIIText asciiText = asciiBuilder.getResult();
+        logger.info("ASCII Text: " + asciiText);
     }
     public static void main(String... args) {
         BuilderDemo client=new BuilderDemo();
         Document doc=new Document();
         client.createASCIIText(doc);
-        System.out.println("This is an example of Builder Pattern");
+        logger.info("This is an example of Builder Pattern");
     }
 }
 //Abstract Builder
@@ -76,8 +82,12 @@ class RTFReader {
     void parseRTF(Document doc) {
         while ((t=doc.getNextToken())!= EOF) {
             switch (t) {
-                case CHAR: builder.convertCharacter(t);
-                case PARA: builder.convertParagraph();
+                case CHAR: 
+                	builder.convertCharacter(t);
+                	break;
+                case PARA: 
+                	builder.convertParagraph();
+                	break;
             }
         }
     }

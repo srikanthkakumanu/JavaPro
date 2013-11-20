@@ -1,5 +1,8 @@
 package com.srikanth.jdp.sp;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Srikanth
@@ -8,6 +11,7 @@ package com.srikanth.jdp.sp;
  * To change this template use File | Settings | File Templates.
  */
 public class AdapterDemo {
+	private static Logger logger = LoggerFactory.getLogger(AdapterDemo.class);
     /**
      * Adapter pattern is adapting between classes and objects. In the adapter pattern, a wrapper class
      * (ie, the adapter) is used translate requests from it to another class (ie, the adaptee). In effect,
@@ -25,25 +29,27 @@ public class AdapterDemo {
      * Adaptee - defines an existing interface that needs adapting.
      * Client - collaborates with objects conforming to the Target interface.
      */
+	private AdapterDemo() {}
+	
     public static void main(String... args) {
         // class adapter
-        System.out.println("class adapter test");
+        logger.info("class adapter test");
         TemperatureInfo tempInfo = new TemperatureClassReporter();
         testTempInfo(tempInfo);
 
         // object adapter
-        System.out.println("\nobject adapter test");
+        logger.info("\nobject adapter test");
         tempInfo = new TemperatureObjectReporter();
         testTempInfo(tempInfo);
     }
     public static void testTempInfo(TemperatureInfo tempInfo) {
         tempInfo.setTemperatureInC(0);
-        System.out.println("temp in C:" + tempInfo.getTemperatureInC());
-        System.out.println("temp in F:" + tempInfo.getTemperatureInF());
+        logger.info("temp in C:" + tempInfo.getTemperatureInC());
+        logger.info("temp in F:" + tempInfo.getTemperatureInF());
 
         tempInfo.setTemperatureInF(85);
-        System.out.println("temp in C:" + tempInfo.getTemperatureInC());
-        System.out.println("temp in F:" + tempInfo.getTemperatureInF());
+        logger.info("temp in C:" + tempInfo.getTemperatureInC());
+        logger.info("temp in F:" + tempInfo.getTemperatureInF());
     }
 }
 // Adaptee class

@@ -1,5 +1,8 @@
 package com.srikanth.datastructures;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Srikanth
@@ -8,18 +11,23 @@ package com.srikanth.datastructures;
  * To change this template use File | Settings | File Templates.
  */
 public class QueueDemo {
-    /**
+ 
+	private static Logger logger = LoggerFactory.getLogger(QueueDemo.class);
+	// Keep in mind that all of those classes are from SLF4J package!
+	/**
      * A Queue is a type of abstract data type that can be implemented as a linear or circular list.
      * A Queue has a front and rear and it follows First In First Out (FIFO).
      * There are four types of Queue: Linear Queue, Circular Queue, Priority Queue, Double ended Queue (Dequeue)
      * Resources:-
      * http://www.youtube.com/watch?v=vs30u4J5Ufs
      */
+	
     private static final int MAX = 5;
     private static int[] queue = new int[MAX];
     private static int front = -1;
     private static int rear = -1;
 
+    private QueueDemo() {}
     public static void main(String... args) {
 
         enQueue(10);
@@ -33,33 +41,33 @@ public class QueueDemo {
         deQueue();
         display();
     }
-    private static void enQueue(int value) {
+    public static void enQueue(int value) {
         if(rear == MAX-1) {
-            System.out.println("Error: Queue is Overflown.");
+            logger.info("Error: Queue is Overflown.");
             return;
         }
-        if(front == -1)
+        if(front == -1) {
             front++;
-
+        }    
         rear = rear + 1;
         queue[rear] = value;
-        System.out.println("enQueue[value=" + queue[rear] + "||front=" + front +"||rear=" + rear + "]");
+        logger.info("enQueue[value=" + queue[rear] + "||front=" + front +"||rear=" + rear + "]");
     }
-    private static void deQueue() {
+    public static void deQueue() {
         if(front == -1 || front == rear+1) {
-            System.out.println("Error: Queue is Underflown.");
+            logger.info("Error: Queue is Underflown.");
             return;
         }
         front = front + 1;
     }
-    private static void display() {
+    public static void display() {
         if(front == -1 || (front == rear+1)) {
-            System.out.println("Queue is empty.");
+            logger.info("Queue is empty.");
             return;
         }
-        System.out.println("----------------");
+        logger.info("----------------");
         for(int i = front; i <= rear; i++) {
-            System.out.println("queue[" + i + "]="+ queue[i]);
+            logger.info("queue[" + i + "]="+ queue[i]);
 
         }
 

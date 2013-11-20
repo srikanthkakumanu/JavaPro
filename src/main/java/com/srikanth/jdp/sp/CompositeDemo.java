@@ -15,6 +15,8 @@ public class CompositeDemo {
      * Composite lets clients treat individual objects and compositions of objects uniformly.
      *
      */
+	private CompositeDemo() {}
+	
     public static void main(String... args) {
         List<Shape> allShapesInSoftware = new ArrayList<Shape>();
        // create a line shape

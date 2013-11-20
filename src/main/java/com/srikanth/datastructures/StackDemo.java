@@ -1,5 +1,8 @@
 package com.srikanth.datastructures;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Srikanth
@@ -8,6 +11,9 @@ package com.srikanth.datastructures;
  * To change this template use File | Settings | File Templates.
  */
 public class StackDemo {
+	private static Logger logger = LoggerFactory.getLogger(StackDemo.class);
+	// Keep in mind that all of those classes are from SLF4J package!
+	
     /**
      *  Stack is a Linear data structure and stores set of homogeneous elements.
      *  It follows Last In First Out (LIFO). Stack can created using Array or Linked List
@@ -23,6 +29,8 @@ public class StackDemo {
     private static int[] stack = null;
     private static int top = 0;
 
+    private StackDemo() {}
+    
     public static void main(String[] args) {
         performSimpleStackOperation();
         if(top == stack.length) {
@@ -32,9 +40,10 @@ public class StackDemo {
         }
     }
 
-    private static void performSimpleStackOperation() {
-        if(stack == null)
+    public static void performSimpleStackOperation() {
+        if(stack == null) {
             createStack();
+        }    
         //fillStackWithData();
         push(10);
         push(20);
@@ -51,21 +60,21 @@ public class StackDemo {
         printStackData();
     }
 
-    private static void performDynamicStackOperation() {
+    public static void performDynamicStackOperation() {
         int[] dynamicStack = new int[stack.length + 5];
         for(int i =0; i < stack.length; i++) {
             dynamicStack[i] = stack[i];
         }
         stack = dynamicStack;
     }
-    private static void createStack() {
+    public static void createStack() {
         stack = new int[5];
     }
 
-    private static void push(int value) {
+    public static void push(int value) {
         if(stack != null) {
             if(top >= stack.length) {
-                System.out.println("Error: Stack Over Flown");
+                logger.info("Error: Stack Over Flown");
             } else {
                 stack[top] = value;
                 if(top < stack.length-1)
@@ -74,9 +83,9 @@ public class StackDemo {
         }
     }
 
-    private static void pop() {
+    public static void pop() {
         if(top < 0) {
-            System.out.println("Error: Stack Under Flown");
+        	logger.info("Error: Stack Under Flown");
         } else {
             stack[top] = 0;
             top--;
@@ -86,16 +95,16 @@ public class StackDemo {
         }
     }
 
-    private static void printStackData() {
+    public static void printStackData() {
         if(stack != null) {
             for (int i = 0; i < stack.length; i++) {
-                System.out.println(stack[i]);
+            	logger.info(new Integer(stack[i]).toString());
             }
         }
-        System.out.println("Current top is : " + top);
+        logger.info("Current top is : " + top);
     }
 
-    private static void fillStackWithData() {
+    public static void fillStackWithData() {
         if(stack != null) {
             for (int i = 0; i < stack.length; i++) {
                 stack[i] = i;

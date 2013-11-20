@@ -1,5 +1,8 @@
 package com.srikanth.datastructures;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Srikanth
@@ -9,6 +12,9 @@ package com.srikanth.datastructures;
  */
 public class CircularQueueDemo {
 
+	private static Logger logger = LoggerFactory.getLogger(CircularQueueDemo.class);
+	// Keep in mind that all of those classes are from SLF4J package!
+	
     /**
      * Resources:-
      * http://www.youtube.com/watch?v=UxHY8D-1fJY
@@ -19,37 +25,40 @@ public class CircularQueueDemo {
     private static int front = -1;
     private static int rear = -1;
 
-    public static void main(String... args) {
-
-        enQueue(10);
-        enQueue(20);
-        enQueue(30);
-        enQueue(40);
-        enQueue(50);
-        display();
-        deQueue();
-        deQueue();
-        deQueue();
-        display();
-    }
-    private static void enQueue(int value) {
+    private CircularQueueDemo() {}
+//    public static void main(String... args) {
+//
+//        enQueue(10);
+//        enQueue(20);
+//        enQueue(30);
+//        enQueue(40);
+//        enQueue(50);
+//        display();
+//        deQueue();
+//        deQueue();
+//        deQueue();
+//        display();
+//    }
+    public static void enQueue(int value) {
         if((front == 0 && rear == MAX-1) || (front == rear+1)) {
-            System.out.println("Error: Queue is Overflown.");
+            logger.info("Error: Queue is Overflown.");
             return;
         }
-        if(front == -1)
-            front++;
-        if(rear == MAX-1)
-            rear = 0;
-        else
-            rear = rear + 1;
-
-        queue[rear] = value;
-        System.out.println("enQueue[value=" + queue[rear] + "||front=" + front +"||rear=" + rear + "]");
-    }
-    private static void deQueue() {
         if(front == -1) {
-            System.out.println("Error: Queue is Underflown.");
+            front++;
+        }   
+        if(rear == MAX-1) {
+            rear = 0;
+        }    
+        else {
+            rear = rear + 1;
+        }   
+        queue[rear] = value;
+        logger.info("enQueue[value=" + queue[rear] + "||front=" + front +"||rear=" + rear + "]");
+    }
+    public static void deQueue() {
+        if(front == -1) {
+            logger.info("Error: Queue is Underflown.");
             return;
         }
         if(front == rear) {
@@ -57,17 +66,18 @@ public class CircularQueueDemo {
             rear = -1;
         } else if(front == MAX-1)
             front = 0;
-        else
+        else {
             front = front + 1;
+        }    
     }
-    private static void display() {
+    public static void display() {
         if(front == -1 || (front == rear+1)) {
-            System.out.println("Queue is empty.");
+            logger.info("Queue is empty.");
             return;
         }
-        System.out.println("----------------");
+        logger.info("----------------");
         for(int i = front; i <= rear; i++) {
-            System.out.println("queue[" + i + "]="+ queue[i]);
+            logger.info("queue[" + i + "]="+ queue[i]);
 
         }
     }

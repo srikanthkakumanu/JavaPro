@@ -1,6 +1,9 @@
 package com.srikanth.jdp.sp;
 
 import java.util.Date;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 /**
  * Created with IntelliJ IDEA.
  * User: Srikanth
@@ -16,6 +19,8 @@ public class ProxyDemo {
      * proxy is to control access rights to an object. A client request may require certain credentials in order
      * to access the object.
      */
+	private ProxyDemo() {}
+	
     public static void main(String... args) {
         Proxy proxy = new Proxy();
         FastThing fastThing = new FastThing();
@@ -24,8 +29,9 @@ public class ProxyDemo {
     }
 }
 abstract class Thing {
+	private static Logger logger = LoggerFactory.getLogger(Thing.class);
     public void sayHello() {
-        System.out.println(this.getClass().getSimpleName() + " says howdy at " + new Date());
+        logger.info(this.getClass().getSimpleName() + " says howdy at " + new Date());
     }
 }
 // FastThing subclasses Thing.
@@ -35,11 +41,13 @@ class FastThing extends Thing {
 }
 // SlowThing also subclasses Thing. However, its constructor takes 5 seconds to execute.
 class SlowThing extends Thing {
+	private static Logger logger = LoggerFactory.getLogger(SlowThing.class);
     public SlowThing() {
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+        	logger.error("Error: " + e.getLocalizedMessage() , e);
+        	throw new RuntimeException(e);
         }
     }
 }
@@ -48,9 +56,10 @@ class SlowThing extends Thing {
 // the proxy's sayHello() method is executed. It instantiates a SlowThing object if it doesn't already exist
 // and then calls sayHello() on the SlowThing object.
 class Proxy {
+	private static Logger logger = LoggerFactory.getLogger(Proxy.class);
     SlowThing slowThing;
     public Proxy() {
-        System.out.println("Creating proxy at " + new Date());
+        logger.info("Creating proxy at " + new Date());
     }
     public void sayHello() {
         if (slowThing == null) {
