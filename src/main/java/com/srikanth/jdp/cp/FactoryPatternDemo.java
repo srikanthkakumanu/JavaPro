@@ -20,7 +20,12 @@ public class FactoryPatternDemo {
      *  created by the class.
      *  If you use reflection for class registration, you can create concrete objects without changing the factory.
      */
-	private FactoryPatternDemo() {}
+	/**
+	 * 
+	 */
+	private FactoryPatternDemo() {
+		
+	}
 	
     public static void main(String... args) {
         Animal animal = AnimalFactory.getAnimal("DOG");

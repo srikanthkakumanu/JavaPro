@@ -5,6 +5,13 @@ package com.srikanth.simple;
  * @
  */
 public class JavaDocDemo {
+	
+	/**
+	 * 
+	 */
+	private JavaDocDemo() {
+		
+	}
 	/**
 	 * 
 	 * @param b

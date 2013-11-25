@@ -28,8 +28,13 @@ public class StackDemo {
      */
     private static int[] stack = null;
     private static int top = 0;
-
-    private StackDemo() {}
+    /**
+     * 
+     *
+     */
+    private StackDemo() {
+    	
+    }
     
     public static void main(String[] args) {
         performSimpleStackOperation();

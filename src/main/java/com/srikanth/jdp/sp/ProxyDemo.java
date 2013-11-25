@@ -19,7 +19,12 @@ public class ProxyDemo {
      * proxy is to control access rights to an object. A client request may require certain credentials in order
      * to access the object.
      */
-	private ProxyDemo() {}
+	/**
+	 * 
+	 */
+	private ProxyDemo() {
+		
+	}
 	
     public static void main(String... args) {
         Proxy proxy = new Proxy();
@@ -47,7 +52,7 @@ class SlowThing extends Thing {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
         	logger.error("Error: " + e.getLocalizedMessage() , e);
-        	throw new RuntimeException(e);
+        	
         }
     }
 }

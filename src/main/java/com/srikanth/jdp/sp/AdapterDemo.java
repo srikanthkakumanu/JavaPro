@@ -29,7 +29,12 @@ public class AdapterDemo {
      * Adaptee - defines an existing interface that needs adapting.
      * Client - collaborates with objects conforming to the Target interface.
      */
-	private AdapterDemo() {}
+	/**
+	 * 
+	 */
+	private AdapterDemo() {
+		
+	}
 	
     public static void main(String... args) {
         // class adapter

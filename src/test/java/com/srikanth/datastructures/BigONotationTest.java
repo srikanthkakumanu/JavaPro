@@ -19,7 +19,7 @@ public class BigONotationTest {
 	@Test
 	public void testContainsDuplicates() {
 		String[] strings = {"10","20","30"};
-		assertTrue(BigONotation.ContainsDuplicates(strings));
+		assertFalse(BigONotation.ContainsDuplicates(strings));
 	}
 
 }

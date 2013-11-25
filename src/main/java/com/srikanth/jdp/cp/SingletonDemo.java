@@ -14,7 +14,12 @@ public class SingletonDemo {
     /**
      * It ensures that only one instance of a class is created and provides global access point to the object.
      */
-	private SingletonDemo() {}
+	/**
+	 * 
+	 */
+	private SingletonDemo() {
+		
+	}
 	
     public static void main(String... args) {
         Singleton singleton = Singleton.getInstance();

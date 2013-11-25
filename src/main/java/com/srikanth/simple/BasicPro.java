@@ -12,7 +12,23 @@ import org.slf4j.LoggerFactory;
  */
 public class BasicPro {
 	private static Logger logger = LoggerFactory.getLogger(BasicPro.class);
+	
+	/**
+	 * 
+	 */
+	private BasicPro() {
+		
+	}
+	/**
+	 * 
+	 * @param args
+	 */
     public static void main(String[] args) {
         logger.info("Present Working Directory: " + System.getProperty("user.dir"));
     }
+}
+class SimpleClass {
+	public void sayHello() {
+		System.out.println("sayHello");
+	}
 }

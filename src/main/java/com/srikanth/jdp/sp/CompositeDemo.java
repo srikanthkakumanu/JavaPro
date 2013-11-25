@@ -15,7 +15,12 @@ public class CompositeDemo {
      * Composite lets clients treat individual objects and compositions of objects uniformly.
      *
      */
-	private CompositeDemo() {}
+	/**
+	 * 
+	 */
+	private CompositeDemo() {
+		
+	}
 	
     public static void main(String... args) {
         List<Shape> allShapesInSoftware = new ArrayList<Shape>();
@@ -49,9 +54,9 @@ public class CompositeDemo {
         // you can explode any object
         // despite the fact that the shape might be
         // simple or complex
-        Shape[] arrayOfShapes = allShapesInSoftware.get(0).explodeShape();
+        allShapesInSoftware.get(0).explodeShape();
     }
-    private static void renderGraphics(List<Shape> shapesToRender) {
+    public static void renderGraphics(List<Shape> shapesToRender) {
         // note that despite the fact there are
         // simple and complex shapes
         // this method deals with them uniformly

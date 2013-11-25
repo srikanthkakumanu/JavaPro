@@ -25,20 +25,9 @@ public class CircularQueueDemo {
     private static int front = -1;
     private static int rear = -1;
 
-    private CircularQueueDemo() {}
-//    public static void main(String... args) {
-//
-//        enQueue(10);
-//        enQueue(20);
-//        enQueue(30);
-//        enQueue(40);
-//        enQueue(50);
-//        display();
-//        deQueue();
-//        deQueue();
-//        deQueue();
-//        display();
-//    }
+    private CircularQueueDemo() {
+    	
+    }
     public static void enQueue(int value) {
         if((front == 0 && rear == MAX-1) || (front == rear+1)) {
             logger.info("Error: Queue is Overflown.");
@@ -64,8 +53,9 @@ public class CircularQueueDemo {
         if(front == rear) {
             front = -1;
             rear = -1;
-        } else if(front == MAX-1)
+        } else if(front == MAX-1) {
             front = 0;
+        }    
         else {
             front = front + 1;
         }    

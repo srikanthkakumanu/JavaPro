@@ -10,6 +10,10 @@ import org.slf4j.LoggerFactory;
  * Time: 5:18 PM
  * To change this template use File | Settings | File Templates.
  */
+/**
+ * @author Srikanth
+ *
+ */
 public class QueueDemo {
  
 	private static Logger logger = LoggerFactory.getLogger(QueueDemo.class);
@@ -26,8 +30,13 @@ public class QueueDemo {
     private static int[] queue = new int[MAX];
     private static int front = -1;
     private static int rear = -1;
-
-    private QueueDemo() {}
+    /**
+     * 
+     *
+     */
+    private QueueDemo() {
+    	
+    }
     public static void main(String... args) {
 
         enQueue(10);

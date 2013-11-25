@@ -44,7 +44,11 @@ abstract class TextConverter {
 }
 // Product
 class ASCIIText {
-    public void append(char c){ }//Implement the code here
+    Logger logger = LoggerFactory.getLogger(ASCIIText.class);
+	public void append(char c) {
+		//Implement the code here
+		logger.info("ASCII Character: " + c);
+    }
 }
 //Concrete Builder
 class ASCIIConverter extends TextConverter {

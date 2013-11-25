@@ -12,7 +12,12 @@ public class FacadePatternDemo {
  * into a single interface. As a result, the client can interact with a single object rather than being 
  * required to interact directly in complicated ways with the objects that make up the subsystem.
  */
-	private FacadePatternDemo() {}
+	/**
+	 * 
+	 */
+	private FacadePatternDemo() {
+		
+	}
 	
 	public static void main(String...strings) {
 		Facade facade = new Facade();

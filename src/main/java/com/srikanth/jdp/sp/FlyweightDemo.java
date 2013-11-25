@@ -23,7 +23,12 @@ public class FlyweightDemo {
      * class implements the Flyweight interface which is used to perform operations based on external state
      * and it also stores common state. A Flyweight Factory is used create and return Flyweight objects.
      */
-	private FlyweightDemo() {}
+	/**
+	 * 
+	 */
+	private FlyweightDemo() {
+		
+	}
     public static void main(String... args) {
         FlyweightFactory flyweightFactory = FlyweightFactory.getInstance();
         for (int i = 0; i < 5; i++) {
@@ -55,7 +60,7 @@ class FlyweightAdder implements Flyweight {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
         	logger.error("Error: " + e.getLocalizedMessage() , e);
-            throw new RuntimeException(e);
+            
         }
     }
     public void doMath(int a, int b) {
@@ -71,7 +76,7 @@ class FlyweightMultiplier implements Flyweight {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
         	logger.error("Error: " + e.getLocalizedMessage() , e);
-        	throw new RuntimeException(e);
+        	
         }
     }
     public void doMath(int a, int b) {
