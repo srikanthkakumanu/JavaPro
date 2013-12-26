@@ -1,7 +1,7 @@
 package com.srikanth.concurrency;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 public class PrimeGenerator extends Thread {
 	//static Logger logger = LoggerFactory.getLogger(PrimeGenerator.class);

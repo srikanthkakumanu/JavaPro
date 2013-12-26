@@ -24,7 +24,14 @@ public class BasicPro {
 	 * @param args
 	 */
     public static void main(String[] args) {
-        logger.info("Present Working Directory: " + System.getProperty("user.dir"));
+    	
+    	String portalUser = "kdoolmit";
+		String fileName = "kdoolmit_32424324_232.pdf";
+		String fileN = fileName.substring(0, fileName.indexOf("_"));
+		System.out.println(fileName.indexOf("_"));
+		System.out.println(fileN);
+		if(portalUser.equalsIgnoreCase(fileName.substring(0, fileName.indexOf("_")))) {}
+        //logger.info("Present Working Directory: " + System.getProperty("user.dir"));
     }
 }
 class SimpleClass {
