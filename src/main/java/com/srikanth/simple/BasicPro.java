@@ -11,31 +11,15 @@ import org.slf4j.LoggerFactory;
  * To change this template use File | Settings | File Templates.
  */
 public class BasicPro {
-	private static Logger logger = LoggerFactory.getLogger(BasicPro.class);
+	//private static Logger logger = LoggerFactory.getLogger(BasicPro.class);
 	
-	/**
-	 * 
-	 */
-	private BasicPro() {
-		
-	}
-	/**
-	 * 
-	 * @param args
-	 */
     public static void main(String[] args) {
-    	
-    	String portalUser = "kdoolmit";
-		String fileName = "kdoolmit_32424324_232.pdf";
-		String fileN = fileName.substring(0, fileName.indexOf("_"));
-		System.out.println(fileName.indexOf("_"));
-		System.out.println(fileN);
-		if(portalUser.equalsIgnoreCase(fileName.substring(0, fileName.indexOf("_")))) {}
-        //logger.info("Present Working Directory: " + System.getProperty("user.dir"));
+    	findHashCode();
     }
-}
-class SimpleClass {
-	public void sayHello() {
-		System.out.println("sayHello");
-	}
+    private static void findHashCode() {
+    	String str = "aA";
+    	System.out.println(str.hashCode());
+    	// String hashcode algorithm : s[0]*31^(n-1) + s[1]*31^(n-2) + ... + s[n-1]
+
+    }
 }
